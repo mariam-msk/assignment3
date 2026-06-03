@@ -23,6 +23,11 @@ kubectl wait --for=condition=Ready pod -l app=mysql -n assignment3 --timeout=120
 
 kubectl apply -f k8s/flask-deployment.yml
 kubectl apply -f k8s/flask-service.yml
+kubectl apply -f k8s/flask-deployment.yml
+kubectl apply -f k8s/flask-service.yml
+
+echo "Scaling Flask API to 3 replicas..."
+kubectl scale deployment flask-api --replicas=3 -n assignment3
 kubectl apply -f k8s/nginx-configmap.yml
 kubectl apply -f k8s/nginx-deployment.yml
 kubectl apply -f k8s/nginx-service.yml
